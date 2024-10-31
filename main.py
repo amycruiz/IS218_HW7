@@ -58,16 +58,11 @@ def main():
     parser = argparse.ArgumentParser(description='Generate a QR code.')
     parser.add_argument('--url', help='The URL to encode in the QR code', default='https://github.com/amycruiz')
     args = parser.parse_args()
-
     setup_logging()
-    
     timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
     qr_filename = f"QRCode_{timestamp}.png"
-
     qr_code_full_path = Path.cwd() / QR_DIRECTORY / qr_filename
-    
     create_directory(Path.cwd() / QR_DIRECTORY)
-    
     generate_qr_code(args.url, qr_code_full_path, FILL_COLOR, BACK_COLOR)
 
 if __name__ == "__main__":
